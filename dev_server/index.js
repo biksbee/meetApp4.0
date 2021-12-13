@@ -1,16 +1,18 @@
+require('dotenv').config();
 const express = require('express');
-const {MongoClient} = require('mongodb');
 const cors = require('cors');
-const router = require('./router');
-const cookieParser = require('cookie-parser')
-
+const {MongoClient} = require('mongodb');
+const registration = require('./registration/registration');
 const client = new MongoClient(process.env.DB_URL);
 const PORT = process.env.Port || 4000;
 const app = express();
-//app.use(express.json);
-app.use(cookieParser());
-app.use(cors());
-app.use('api/', router);
+
+
+app.use(cors({
+    credentials: true,
+    origin: process.env.CLIENT_URL
+}));
+
 app.get('/meetAppBd', async function (req, res){
     let data = await moove();
     res.json(data);
@@ -18,7 +20,10 @@ app.get('/meetAppBd', async function (req, res){
 
 async function start(){
     try {
-        await client.connect();
+        await client.connect({
+            useNewUrlParser: true,
+            useUnifiedTopology: true
+        });
         app.listen(PORT, () => {
             console.log(`Server has been started on ${PORT} port`);
         });
@@ -34,3 +39,9 @@ const moove = async () => {
     return spisokUsers;
 }
 start();
+
+const reg = async () => {
+    await client.db().collection("users");
+    const users = await client.db().collection("users");
+    await users.insertOne(user);
+}
