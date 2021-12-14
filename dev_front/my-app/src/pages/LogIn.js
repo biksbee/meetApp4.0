@@ -1,8 +1,7 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './style_page.css';
-import MyInput from "../Component/UI/input/MyInput";
 import MyButton from "../Component/UI/button/MyButton";
-import {useState} from "react";
+import MyInput from "../Component/UI/input/MyInput";
 
 
 function LogIn(){
@@ -11,28 +10,45 @@ function LogIn(){
     const [password, setPassword] = useState('');
 
     const checkUsr = () => {
-        fetch('http://localhost:4000/meetAppBd', {})
+        fetch('http://localhost:5000/meetAppBd', {
+            method: "POST", h: JSON.stringify({nick, password}),
+            headers: {'Content-Type': 'application/json'}
+        })
+            .then(res => res.json())
+            .then(res => console.log(res));
+        setSpisok([...spisok, {nick: nick, password: password}]);
     }
 
-        return (
-            <div className={"form"} className={"page"}>
-                <div className={"App"}>
-                    <div className={"App-header"}>
-                        <h2>Authorization:</h2>
-                        <form method="post" className="reg">
-                            <p>
-                                <input type="nick" id="nick" name="nick" placeholder={"nick"} required={true}/>
-                            </p>
-                            <p>
-                                <input type="password" id="password" name="password" placeholder={"***********"}
-                                       required={true}/>
-                            </p>
-                            <button type="submit" className="i" id="send_reg" onClick="authorization()">Send</button>
-                        </form>
-                    </div>
+    return (
+        <div className={"form"} className={"page"}>
+            <div className={"App"}>
+                <div className={"App-header"}>
+                    <h2>Authorization:</h2>
+                    <form>
+                        <p>
+                            <MyInput
+                                value={nick}
+                                onChange={e => setNick(e.target.value)}
+                                type="nick"
+                                placeholder={"nick"}
+                                required={true}
+                            />
+                        </p>
+                        <p>
+                            <MyInput
+                                value={password}
+                                onChange={e => setPassword(e.target.value)}
+                                type="password"
+                                placeholder={"***********"}
+                                required={true}
+                            />
+                        </p>
+                        <MyButton type="submit" onClick={checkUsr}>Send</MyButton>
+                    </form>
                 </div>
             </div>
-        );
+        </div>
+    );
 }
 
 export default LogIn;

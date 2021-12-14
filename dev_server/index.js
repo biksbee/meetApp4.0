@@ -18,11 +18,18 @@ app.use(bodyParser.json());
 // });
 //
 app.post('/meetAppBd', async function(req, res) {
+    console.log("1");
     let spisok = await addUsr(req.body)
-    let data = req.body
     console.log(req.body)
     res.json(spisok)
 });
+app.post('/meetAppBd', async function(req, res) {
+    console.log("2");
+    let check = await checkUsr(req.h)
+    console.log(req.h);
+    res.json(check)
+    console.log("\n\n"+ check +"\n\n")
+})
 async function start(){
     try {
         await client.connect();
@@ -49,5 +56,12 @@ const addUsr = async ({name,email, nick, password}) => {
         Password: password
     })
 }
-
+const checkUsr = async ({nick, password}) => {
+    const usr = await client.db().collection("users").findOne({
+        Nick: nick,
+        Password: password
+    });
+    let result = (usr === {}) ? true : false;
+    return result;
+}
 
