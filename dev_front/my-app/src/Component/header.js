@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component, useEffect, useState} from 'react';
 import {Navbar, Nav, Container} from "react-bootstrap";
 import logo from "./logo.jpg";
 import {BrowserRouter, Routes, Route, Link} from "react-router-dom";
@@ -7,9 +7,10 @@ import Blog from "../pages/Blog";
 import SignUp from "../pages/SignUp";
 import LogIn from "../pages/LogIn";
 import About from "../pages/About";
-//
-export default class Header extends React.Component {
-    render(){
+
+
+function Header() {
+
         return (
             <>
                 <Navbar
@@ -47,6 +48,9 @@ export default class Header extends React.Component {
                 </BrowserRouter>
             </>
         )
-    }
+
 }
+
+export default Header;
 //`
+
