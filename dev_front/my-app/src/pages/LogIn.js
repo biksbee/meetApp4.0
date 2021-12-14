@@ -1,7 +1,19 @@
 import React from 'react';
 import './style_page.css';
+import MyInput from "../Component/UI/input/MyInput";
+import MyButton from "../Component/UI/button/MyButton";
+import {useState} from "react";
+
 
 function LogIn(){
+    const [spisok, setSpisok] = useState([]);
+    const [nick, setNick] = useState('');
+    const [password, setPassword] = useState('');
+
+    const checkUsr = () => {
+        fetch('http://localhost:4000/meetAppBd', {})
+    }
+
         return (
             <div className={"form"} className={"page"}>
                 <div className={"App"}>

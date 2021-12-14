@@ -1,26 +1,30 @@
+import React, {useState} from 'react'
 import './style_page.css';
-import '../'
-import MyInput from "../Component/UI/input/MyInput";
+import PostList from "../Component/PostList";
 import MyButton from "../Component/UI/button/MyButton";
-import {useState} from "react";
-const React = require('react');
+import MyInput from "../Component/UI/input/MyInput";
+
 
 
 function SignUp(){
-    const [spisok, setSpisok] = useState([]);
+    const [posts, setPosts] = useState([]);
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [nick, setNick] = useState('');
     const [password, setPassword] = useState('');
 
+
+
+
     const addNewUsr = () => {
-        fetch('http://localhost:4000/meetAppBd', {
+        fetch('http://localhost:5000/meetAppBd', {
             method: "POST", body: JSON.stringify({name, nick, email, password}),
             headers: {'Content-Type': 'application/json'}
         })
             .then(res => res.json())
             .then(res => console.log(res));
-        setSpisok([...spisok, {name: name, email: email, nick: nick, password: password}]);
+        alert("test2");
+        setPosts([...posts, {name: name, email: email, nick: nick, password: password}]);
     }
     return (
         <div className={"form"} class={"page"}>
@@ -32,9 +36,7 @@ function SignUp(){
                             <MyInput
                                 value={name}
                                 onChange={e => setName(e.target.value)}
-                                type="username"
-                                id="username"
-                                name="username"
+                                type="text"
                                 placeholder={"name"}
                                 required={true}
                             />
@@ -43,9 +45,7 @@ function SignUp(){
                             <MyInput
                                 value={email}
                                 onChange={e => setEmail(e.target.value)}
-                                type="email"
-                                id="email"
-                                name="email"
+                                type="text"
                                 placeholder={"email"}
                                 required={true}
                             />
@@ -54,9 +54,7 @@ function SignUp(){
                             <MyInput
                                 value={nick}
                                 onChange={e => setNick(e.target.value)}
-                                type="nick"
-                                id="nick"
-                                name="nick"
+                                type="text"
                                 placeholder={"nick"}
                                 required={true}
                             />
@@ -66,14 +64,13 @@ function SignUp(){
                                 value={password}
                                 onChange={e => setPassword(e.target.value)}
                                 type="password"
-                                id="password"
-                                name="password"
                                 placeholder={"***********"}
                                 required={true}
                             />
                         </p>
                         <MyButton type="submit" onClick={addNewUsr}>Send</MyButton>
                     </form>
+                    <PostList posts={posts} title="usersы"/>
                 </div>
             </div>
         </div>

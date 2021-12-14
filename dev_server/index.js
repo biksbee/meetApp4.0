@@ -2,20 +2,21 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const {MongoClient} = require('mongodb');
-const client = new MongoClient('mongodb+srv://jenya:jeka51230@cluster0.qfhya.mongodb.net/meetAppBd?retryWrites=true&w=majority', {
+const client = new MongoClient(process.env.DB_URL, {
     useUnifiedTopology: true
 });
-const PORT = 4000;
-const app = express();
+
 const bodyParser = require('body-parser');
-app.use(bodyParser.urlencoded({ extended: false }))
+const PORT = process.env.PORT || 4000;
+const app = express();
 app.use(cors());
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 // app.get('/meetAppBd', async function (req, res){
 //     let data = await moove();
 //     res.json(data);
 // });
-
+//
 app.post('/meetAppBd', async function(req, res) {
     let spisok = await addUsr(req.body)
     let data = req.body
@@ -32,7 +33,7 @@ async function start(){
         console.log(`_-_-_-_-_-_-_-_-_-_-_-_-_\nYour error!\n${e}`);
     }
 }
-
+start();
 // const moove = async () => {
 //     await client.db().collection("users");
 //     const users = await client.db().collection("users");
@@ -48,5 +49,5 @@ const addUsr = async ({name,email, nick, password}) => {
         Password: password
     })
 }
-start();
+
 
