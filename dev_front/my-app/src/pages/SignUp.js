@@ -15,7 +15,6 @@ function SignUp(){
 
 
 
-
     const addNewUsr = () => {
         fetch('http://localhost:5000/meetAppBd', {
             method: "POST", body: JSON.stringify({name, nick, email, password}),
@@ -23,9 +22,9 @@ function SignUp(){
         })
             .then(res => res.json())
             .then(res => console.log(res));
-        alert("test2");
         setPosts([...posts, {name: name, email: email, nick: nick, password: password}]);
     }
+
     return (
         <div className={"form"} class={"page"}>
             <div className={"App"}>
@@ -36,7 +35,7 @@ function SignUp(){
                             <MyInput
                                 value={name}
                                 onChange={e => setName(e.target.value)}
-                                type="text"
+                                type="username"
                                 placeholder={"name"}
                                 required={true}
                             />
@@ -45,7 +44,7 @@ function SignUp(){
                             <MyInput
                                 value={email}
                                 onChange={e => setEmail(e.target.value)}
-                                type="text"
+                                type="email"
                                 placeholder={"email"}
                                 required={true}
                             />
@@ -54,7 +53,7 @@ function SignUp(){
                             <MyInput
                                 value={nick}
                                 onChange={e => setNick(e.target.value)}
-                                type="text"
+                                type="nick"
                                 placeholder={"nick"}
                                 required={true}
                             />
@@ -70,7 +69,7 @@ function SignUp(){
                         </p>
                         <MyButton type="submit" onClick={addNewUsr}>Send</MyButton>
                     </form>
-                    <PostList posts={posts} title="usersы"/>
+                    {/*<PostList posts={posts} title="usersы"/>*/}
                 </div>
             </div>
         </div>

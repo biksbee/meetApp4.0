@@ -7,10 +7,10 @@ const PostItem = (props) => {
             <div className="post__content">
                 <strong>{props.post.id}.</strong>
                 <div>
-                    <p>{props.post.name}</p>
-                    <p>{props.post.email}</p>
-                    <p>{props.post.nick}</p>
-                    <p>{props.post.password}</p>
+                    {props.post.name}
+                    {props.post.email}
+                    {props.post.nick}
+                    {props.post.password}
                 </div>
             </div>
             <div className="post__btns">
