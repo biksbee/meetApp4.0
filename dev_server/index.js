@@ -12,24 +12,36 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-// app.get('/meetAppBd', async function (req, res){
-//     let data = await moove();
-//     res.json(data);
-// });
-//
-app.post('/meetAppBd', async function(req, res) {
-    console.log("1");
-    let spisok = await addUsr(req.body)
-    console.log(req.body)
-    res.json(spisok)
+app.get('/meetAppBd', async function (req, res){
+    let data = await moove();
+    let listUsers = new Map();
+    let i = 1;
+    data.map((element) => {listUsers.set(i, [element]); i++});
+    for(let key of listUsers)
+        console.log(key)
+    res.json(data);
 });
+
 app.post('/meetAppBd', async function(req, res) {
-    console.log("2");
-    let check = await checkUsr(req.h)
-    console.log(req.h);
-    res.json(check)
-    console.log("\n\n"+ check +"\n\n")
+    if(req.body.size === 4) {
+        console.log("1");
+        let spisok = await addUsr(req.body);
+        console.log(req.body);
+        res.json(spisok);
+    } else {
+        console.log("2");
+        let check = await checkUsr(req.body);
+        console.log(req.body);
+        res.json(check);
+    }
 })
+
+// app.post('/meetAppBd', async function(req, res) {
+//     let spisok = await addUsr(req.body)
+//     console.log(req.body)
+//     res.json(spisok)
+// });
+
 async function start(){
     try {
         await client.connect();
@@ -41,12 +53,12 @@ async function start(){
     }
 }
 start();
-// const moove = async () => {
-//     await client.db().collection("users");
-//     const users = await client.db().collection("users");
-//     const spisokUsers =  await users.find().toArray();
-//     return spisokUsers;
-// }
+const moove = async () => {
+    await client.db().collection("users");
+    const users = await client.db().collection("users");
+    const spisokUsers =  await users.find().toArray();
+    return spisokUsers;
+}
 
 const addUsr = async ({name,email, nick, password}) => {
     return await client.db().collection("users").insertOne({
@@ -57,11 +69,11 @@ const addUsr = async ({name,email, nick, password}) => {
     })
 }
 const checkUsr = async ({nick, password}) => {
-    const usr = await client.db().collection("users").findOne({
+    return await client.db().collection("users").findOne({
         Nick: nick,
         Password: password
     });
-    let result = (usr === {}) ? true : false;
-    return result;
+    // let result = (usr === {}) ? true : false;
+    // return result;
 }
 

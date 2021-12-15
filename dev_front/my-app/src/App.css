@@ -1,9 +1,5 @@
-
-.App-showAll{
-  background-color: #eff5f2;
-  border: 1px solid #61dafb;
-  border-radius: 10px;
-  color: #181812;
+body {
+    /*background-color: #3d3c3c;*/
 }
 .App-header {
   min-height: 100vh;

@@ -3,7 +3,7 @@ import './style_page.css';
 
 function Blog(){
         return (
-            <div class={"page"}>
+            <div className={"page"}>
                 <h1>Blogs</h1>
             </div>
         );

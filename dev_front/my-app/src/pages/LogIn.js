@@ -11,7 +11,7 @@ function LogIn(){
 
     const checkUsr = () => {
         fetch('http://localhost:5000/meetAppBd', {
-            method: "POST", h: JSON.stringify({nick, password}),
+            method: "POST", body: JSON.stringify({nick, password}),
             headers: {'Content-Type': 'application/json'}
         })
             .then(res => res.json())

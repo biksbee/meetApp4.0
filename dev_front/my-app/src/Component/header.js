@@ -1,12 +1,7 @@
-import React, {Component, useEffect, useState} from 'react';
+import React from 'react';
 import {Navbar, Nav, Container} from "react-bootstrap";
 import logo from "./logo.jpg";
-import {BrowserRouter, Routes, Route, Link} from "react-router-dom";
-import Home from "../pages/Home";
-import Blog from "../pages/Blog";
-import SignUp from "../pages/SignUp";
-import LogIn from "../pages/LogIn";
-import About from "../pages/About";
+import Routs from "./UI/route/Routs";
 
 
 function Header() {
@@ -28,7 +23,7 @@ function Header() {
                          <Navbar.Collapse id={"responsive-navbar-nav"}>
                             <Nav className={"mr-auto nav-link"}>
                                 <Nav.Link href={"/"}>Home</Nav.Link>
-                                <Nav.Link href={"/about"}>About</Nav.Link>
+                                <Nav.Link href={"/about"}>Users</Nav.Link>
                                 <Nav.Link href={"/blog"}>Blog</Nav.Link>
                                 <Nav.Link href={"/logIn"}>LogIn</Nav.Link>
                                 <Nav.Link href={"/signUp"}>SignUp</Nav.Link>
@@ -36,16 +31,7 @@ function Header() {
                          </Navbar.Collapse>
                     </Container>
                 </Navbar>
-                <BrowserRouter>
-                    <Routes>
-                        <Route path={"/"} element={<Home/>}/>
-                        <Route path={"/About"} element={<About/>}/>
-                        <Route path={"/blog"} element={<Blog/>}/>
-                        <Route path={"/about"} element={<About/>}/>
-                        <Route path={"/logIn"} element={<LogIn/>}/>
-                        <Route path={"/signUp"} element={<SignUp/>}/>
-                    </Routes>
-                </BrowserRouter>
+                <Routs />
             </>
         )
 

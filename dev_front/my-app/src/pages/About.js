@@ -1,12 +1,14 @@
 import React from "react";
+import ButtonUsr from "../Component/UI/button/ButtonUsr";
+import RoutsMenu from "../Component/UI/routs-menu/RoutsMenu";
 
 function About(){
     return(
         <div className={"page"}>
-            <h1>This is the about page</h1>
+            <ButtonUsr />
+            <RoutsMenu />
         </div>
     )
-
 }
 
 export default About;

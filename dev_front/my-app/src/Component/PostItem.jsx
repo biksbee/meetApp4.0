@@ -1,20 +1,17 @@
 import React from 'react';
+import "../pages/style_page.css"
 
 const PostItem = (props) => {
 
     return (
-        <div className="post">
+        <div className="post page mt-2" class={"bl"}>
             <div className="post__content">
-                <strong>{props.post.id}.</strong>
-                <div>
-                    {props.post.name}
-                    {props.post.email}
-                    {props.post.nick}
-                    {props.post.password}
+                <div className="block-example border-bottom border-secondary mb-2">
+                    <p>Name: {props.post.Name}</p>
+                    <p>Email: {props.post.Email}</p>
+                    <p>Nick: {props.post.Nick}</p>
+                    <p>Password: {props.post.Password}</p>
                 </div>
-            </div>
-            <div className="post__btns">
-                <button>Удалить</button>
             </div>
         </div>
     );

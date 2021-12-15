@@ -1,3 +1,14 @@
 .page{
     margin-top: 72px;
 }
+.App-showAll{
+    width: 50%;
+    color: #181812;
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+.bl{
+    border-radius: 10px;
+    background-color: #3d3c3c;
+    margin-bottom: 100px;
+}
