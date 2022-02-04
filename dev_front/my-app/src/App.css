@@ -1,5 +1,9 @@
 body {
-    /*background-color: #3d3c3c;*/
+  background-image: url("../src/image/pink-g0b6e6356d_1920.jpg");
+  background-repeat: no-repeat;
+}
+.App{
+  height: 100px;
 }
 .App-header {
   min-height: 100vh;

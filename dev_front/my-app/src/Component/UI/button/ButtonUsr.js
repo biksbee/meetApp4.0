@@ -14,9 +14,10 @@ function ButtonUsr(){
             <ButtonGroup aria-label="Basic example">
                 <Button href={"/"} variant="secondary">Home</Button>
                 <Button href={"/list"} variant="secondary">ListUsers</Button>
-                <Button href={"/"} variant="secondary">Create group</Button>
+                <Button href={"/createGroup"} variant="secondary">Create group</Button>
                 <Button href={"/"} variant="secondary">Group history</Button>
                 <Button href={"/"} variant="secondary">Friends</Button>
+                <Button href={"/chat"} variant="secondary">Chat</Button>
             </ButtonGroup>
 
         </Navbar>

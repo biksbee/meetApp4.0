@@ -12,9 +12,10 @@ function Slider() {
         <Carousel>
             <Carousel.Item>
                 <img
+
                     className="d-block w-100"
                     src={slide1}
-                    height={"667"}
+                    height={"750"}
                 />
                 <Carousel.Caption>
                     <h3>First slide label</h3>
@@ -25,7 +26,7 @@ function Slider() {
                 <img
                     className="d-block w-100"
                     src={slide2}
-                    height={"667"}
+                    height={"750"}
                 />
 
                 <Carousel.Caption>
@@ -37,7 +38,7 @@ function Slider() {
                 <img
                     className="d-block w-100"
                     src={slide3}
-                    height={"667"}
+                    height={"750"}
                 />
 
                 <Carousel.Caption>

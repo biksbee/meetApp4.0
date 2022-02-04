@@ -3,6 +3,7 @@ import './style_page.css';
 import PostList from "../Component/PostList";
 import MyButton from "../Component/UI/button/MyButton";
 import MyInput from "../Component/UI/input/MyInput";
+import body from "../Component/body/body";
 
 
 
@@ -14,22 +15,21 @@ function SignUp(){
     const [password, setPassword] = useState('');
 
 
-
     const addNewUsr = () => {
-        fetch('http://localhost:5000/meetAppBd', {
+        fetch('http://localhost:5000/users', {
             method: "POST", body: JSON.stringify({name, nick, email, password}),
             headers: {'Content-Type': 'application/json'}
         })
             .then(res => res.json())
             .then(res => console.log(res));
         setPosts([...posts, {name: name, email: email, nick: nick, password: password}]);
+        console.log();
     }
-
     return (
-        <div className={"form"} class={"page"}>
+        <div className={"form page"}>
             <div className={"App"}>
                 <div className={"App-header"}>
-                    <h2>Register user:</h2>
+                    <h2 className={"color"}>Register user:</h2>
                     <form>
                         <p>
                             <MyInput

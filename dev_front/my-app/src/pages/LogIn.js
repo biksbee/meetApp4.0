@@ -10,7 +10,7 @@ function LogIn(){
     const [password, setPassword] = useState('');
 
     const checkUsr = () => {
-        fetch('http://localhost:5000/meetAppBd', {
+        fetch('http://localhost:5000/api/meetAppBd', {
             method: "POST", body: JSON.stringify({nick, password}),
             headers: {'Content-Type': 'application/json'}
         })
@@ -20,10 +20,10 @@ function LogIn(){
     }
 
     return (
-        <div className={"form"} className={"page"}>
+        <div className={"form page"}>
             <div className={"App"}>
                 <div className={"App-header"}>
-                    <h2>Authorization:</h2>
+                    <h2 className={"color"}>Authorization:</h2>
                     <form>
                         <p>
                             <MyInput

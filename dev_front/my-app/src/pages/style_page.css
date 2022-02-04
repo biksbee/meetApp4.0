@@ -1,14 +1,22 @@
 .page{
-    margin-top: 72px;
+    margin: 72px 0;
 }
 .App-showAll{
     width: 50%;
     color: #181812;
     margin-top: 100px;
-    margin-bottom: 100px;
+    /*margin-bottom: 100px;*/
+}
+.ot{
+    margin-top: 100px;
 }
 .bl{
     border-radius: 10px;
-    background-color: #3d3c3c;
-    margin-bottom: 100px;
+    margin-top: 100px;
+    color: white;
+    background: linear-gradient(dimgrey, black);
+    /*margin-bottom: 100px;*/
+}
+.color{
+    color: black;
 }
