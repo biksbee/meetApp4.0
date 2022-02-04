@@ -3,8 +3,6 @@ import './style_page.css';
 import PostList from "../Component/PostList";
 import MyButton from "../Component/UI/button/MyButton";
 import MyInput from "../Component/UI/input/MyInput";
-import body from "../Component/body/body";
-
 
 
 function SignUp(){
@@ -23,7 +21,6 @@ function SignUp(){
             .then(res => res.json())
             .then(res => console.log(res));
         setPosts([...posts, {name: name, email: email, nick: nick, password: password}]);
-        console.log();
     }
     return (
         <div className={"form page"}>
